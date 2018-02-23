@@ -1,0 +1,39 @@
+#!/bin/python
+
+import sys
+
+def abbreviation(a, b):
+    # Complete this function
+    result = "NO"
+    # a = a.upper()
+
+    if (len(a) < 1) and (len(a) > 1000):
+        return result
+
+    if (len(b) < 1) and (len(b) > 1000):
+        return result
+
+    j = 0
+    for i, c in enumerate(a): # a puede tener minusculas y mayusculas
+        if j < len(b):
+            if c.upper() == b[j]:
+                j += 1
+            else:
+                continue    
+
+        if j == len(b):
+            result = "YES"
+            break
+
+    return result
+
+if __name__ == "__main__":
+    q = int(raw_input().strip())
+    if q >= 1 and q <= 10:
+        for a0 in xrange(q):
+            a = raw_input().strip()
+            b = raw_input().strip()
+            result = abbreviation(a, b)
+            print result
+    else:
+        print "NO"
