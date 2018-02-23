@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
+
+class Solution
+{
+    static string abbreviation(string a, string b)
+    {
+        string result = "NO";
+        //a = a.ToUpper();
+        // Complete this function
+        if (!(a.Length >= 1) && !(a.Length <= 1000))
+        {
+            return result;
+        }
+
+        if (!(b.Length >= 1) && !(b.Length <= 1000))
+        {
+            return result;
+        }
+
+        if (!(a.All(Char.IsLetter)))
+        {
+            return result;
+        }
+
+        if (!(b.Any(char.IsUpper)))
+        {
+            return result;
+        }
+
+        int j = 0;
+        int count = 0; 
+        for (int i = 0; i < a.Length; i++)
+        {
+            if (char.ToUpper(a[i]) == b[j])
+            {
+                if (j < b.Length)
+                {
+                    j++;
+                }
+            }
+            else
+            {
+                if (char.IsUpper(a[i]))
+                {
+                    count++;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    static void Main(string[] args)
+    {
+        int q = Convert.ToInt32(Console.ReadLine());
+
+        // 1 <= q <= 10
+        if (q >= 1 && q <= 10)
+        {
+
+            for (int a0 = 0; a0 < q; a0++)
+            {
+                string a = Console.ReadLine();
+                string b = Console.ReadLine();
+                string result = abbreviation(a, b);
+                Console.WriteLine(result);
+                Console.Read();
+            }
+        }
+        else
+        {
+            Console.WriteLine("NO");
+            Console.Read();
+        }
+    }
+}
